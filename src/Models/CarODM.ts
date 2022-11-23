@@ -18,7 +18,9 @@ class CarsODM {
     this.model = models.Car || model('Car', this.schema);
   }
 
-  public create = (car: ICar): Promise<ICar> => this.model.create({ ...car });
+  public create = (car: ICar) => this.model.create({ ...car });
+  public getAll = () => this.model.find({});
+  public getById = (id: string) => this.model.findById(id);
 }
 
 export default CarsODM;
