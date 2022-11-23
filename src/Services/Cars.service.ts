@@ -1,4 +1,4 @@
-import CarsODM from '../Models/CarODM';
+import CarsODM from '../Models/Cars.model';
 import ICar from '../Interfaces/ICar';
 import Car from '../Domains/Car';
 import createError from '../Utils/createError';

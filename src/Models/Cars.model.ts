@@ -15,7 +15,7 @@ class CarsODM {
       doorsQty: { type: Number, required: true },
       seatsQty: { type: Number, required: true },
     });
-    this.model = models.Car || model('Car', this.schema);
+    this.model = models.car || model('car', this.schema);
   }
 
   public create = (car: ICar) => this.model.create({ ...car });
