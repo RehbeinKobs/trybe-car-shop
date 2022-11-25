@@ -16,6 +16,17 @@ class CarsService {
     return new Car(response);
   };
 
+  public update = async (id: string, body: ICar): Promise<void> => {
+    try {
+      const response = await this.carsModel.update(id, body);
+      if (!response) throw createError(404, 'Car not found');
+    } catch (e) {
+      const error = e as IError; 
+      if (error.status) throw error;
+      throw createError(422, 'Invalid mongo id');
+    }
+  };
+
   public getAll = async (): Promise<Car[]> => {
     const response = await this.carsModel.getAll();
     return response.map((car: ICar) => new Car(car));
@@ -28,7 +39,7 @@ class CarsService {
       throw createError(404, 'Car not found');
     } catch (e) {
       const error = e as IError; 
-      if (error.status) throw createError(404, 'Car not found');
+      if (error.status) throw error;
       throw createError(422, 'Invalid mongo id');
     }
   };

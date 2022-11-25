@@ -11,6 +11,7 @@ const carsController = new CarsController();
 app.post('/cars', carsController.create);
 app.get('/cars', carsController.getAll);
 app.get('/cars/:id', carsController.getById);
+app.put('/cars/:id', carsController.update);
 
 app.use(ErrorHandler);
 

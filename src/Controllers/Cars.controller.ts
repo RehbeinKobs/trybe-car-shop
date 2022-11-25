@@ -18,6 +18,17 @@ class CarsController {
     }
   };
 
+  public update = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const { body, params } = req;
+      const { id } = params;
+      await this.carsService.update(id, body);
+      res.status(200).json({ id, ...body });
+    } catch (e) {
+      next(e);
+    }
+  };
+
   public getAll = async (_req: Request, res: Response, next: NextFunction) => {
     try {
       const response = await this.carsService.getAll();

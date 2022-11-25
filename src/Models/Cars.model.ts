@@ -21,6 +21,7 @@ class CarsODM {
   public create = (car: ICar) => this.model.create({ ...car });
   public getAll = () => this.model.find({});
   public getById = (id: string) => this.model.findById(id);
+  public update = (id: string, body: ICar) => this.model.findByIdAndUpdate(id, { ...body });
 }
 
 export default CarsODM;
